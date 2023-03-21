@@ -4,6 +4,7 @@ import axios from 'axios';
 const BlogCard = (props) => {
 
     const {blog, urlEndPoint, setShouldRefresh } = props;
+    console.log(blog)
     const [title, setTitle] = useState(blog.title);
     const [text, setText] = useState(blog.text);
     const [author, setAuthor] = useState(blog.author);
@@ -23,13 +24,13 @@ const BlogCard = (props) => {
     //   } 
 
     // if above function is to be used, then "req" has to be added after the below blog.id}`, req
-      const response = axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`)
-      .then(function (response) {
-        console.log(response);
-      },{
-      'Content-Type': 'application/json'
-      })
-      setShouldRefresh(false);
+      // const response = axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`)
+      // .then(function (response) {
+      //   console.log(response);
+      // },{
+      // 'Content-Type': 'application/json'
+      // })
+      // setShouldRefresh(false);
     // }
     const handleDeleteBlog = () => {
       const response = axios.delete(`${urlEndPoint}/blogs/delete-one/${blog.id}`)
@@ -48,10 +49,9 @@ const BlogCard = (props) => {
         author: author,
         year: year,
         categories: categories,
-        // id: id,
-        // createdAt: createdAt
+       
     } 
-      const response = axios.put(`${urlEndPoint}/todos/update-one/${blog.id}`, req)
+      const response = axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`, req)
       .then(function (response) {
         console.log(response);
       },{
@@ -62,7 +62,8 @@ const BlogCard = (props) => {
 
     return (
         <div>
-          {!isEditing && <h2>{blog.title}</h2>}
+        
+          {!isEditing && <h2>Title: {blog.title}</h2>}
           {isEditing && (
             <input
               type="text"
@@ -72,7 +73,7 @@ const BlogCard = (props) => {
               }}
             />
           )}
-          <p>ID: {blog.id}</p>
+          {/* <br/> */}
           {!isEditing && <p>Text: {blog.text}</p>}
           {isEditing && (
                     <>
@@ -83,10 +84,10 @@ const BlogCard = (props) => {
                 setText(e.target.value);
               }}
             />
-                    <br/>
-                    </>
+          </>
           )}
-                
+          {/* <br/> */}
+
           {!isEditing && <p>Author: {blog.author}</p>}
           {isEditing && (
             <input
@@ -97,8 +98,9 @@ const BlogCard = (props) => {
             }}
           />
           )}
-          <br/>
-          {!isEditing && <h2>{blog.year}</h2>}
+          {/* <br/> */}
+        
+          {!isEditing && <p>Year: {blog.year}</p>}
           {isEditing && (
             <input
               type="text"
@@ -108,7 +110,9 @@ const BlogCard = (props) => {
               }}
             />
           )}
-          {!isEditing && <h2>{blog.categories}</h2>}
+          {/* <br/> */}
+          
+          {!isEditing && <p>Categories: {blog.categories}</p>}
           {isEditing && (
             <input
               type="text"
@@ -122,7 +126,8 @@ const BlogCard = (props) => {
                    
            
           {/* <p>Is Complete: {blog.isComplete ? "Complete" : "Incomplete"}</p> */}
-          {/* <p>Creation Date: {blog.creationDate.toString()}</p> */}
+          <p>ID: {blog.id}</p>
+          <p>Creation Date: {blog.createdAt.toString()}</p>
           {/* <p>Last Modified: {blog.lastModified.toString()}</p> */}
           {/* <p>
             Completed Date: {blog.completedDate && blog.completedDate.toString()}
@@ -134,12 +139,10 @@ const BlogCard = (props) => {
           >
             Toggle Complete
           </button> */}
-          <button
-            onClick={() => {
-                handleDeleteBlog();
-            }}
+          <button onClick={() => {handleDeleteBlog();
+          }}
           >
-            Delete Blog
+          Delete Blog
           </button>
                 {!isEditing && 
           <button
@@ -149,7 +152,8 @@ const BlogCard = (props) => {
           >
             Edit Blog
           </button>
-                }
+                } 
+
                 {isEditing && 
           <button
             onClick={() => {
@@ -160,6 +164,8 @@ const BlogCard = (props) => {
             Update Blog
           </button>
                 }
+                <br/>
+                <br/>
         </div>
       );
 }
