@@ -12,8 +12,7 @@ const BlogFormPage = (props) => {
 	const [author, setAuthor] = useState("")
     const [year, setYear] = useState("")
     const [categories, setCategories] = useState("")
-    // const [id, setId] = useState("")
-    // const [createdAt, setCreatedAt] = useState("")
+    
 
 	//instantiate navigator 
 	const navigate = useNavigate();
@@ -29,17 +28,17 @@ const BlogFormPage = (props) => {
             text: text,
             author: author,
             year: year,
-            categories: categories,
+            categories: categories.split(","),
             // id: id,
             // createdAt: createdAt
-
+// x-www-form-urlencoded
           }
 		console.log(req);
         axios.post(`${urlEndPoint}/blogs/create-one`, req)
           .then(function (response) {
             console.log(response);
           },{
-			'Content-Type': 'application/x-www-form-urlencoded'
+			'Content-Type': 'application/json'
 		  })
           .catch(function (error) {
             console.log(error);
@@ -80,8 +79,8 @@ const BlogFormPage = (props) => {
 			<input type="text" onChange={(e)=>{
 				setCategories(e.target.value)
 			}}/>
-			<br/>
-			<br/>
+			
+			
             {/* <label>Id</label>
 			<input type="text" onChange={(e)=>{
 				setId(e.target.value)
@@ -92,7 +91,7 @@ const BlogFormPage = (props) => {
 				setCreatedAt(e.target.value)
 			}}/> */}
             <br/>
-			<br/>
+			
 			<button onClick={()=>{
 				handleCreateBlog()
 				navigate("/")
