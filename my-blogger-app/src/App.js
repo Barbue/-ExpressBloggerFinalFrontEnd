@@ -7,7 +7,7 @@ import axios from 'axios';
 import HomePage from './Pages/HomePage';
 import BlogFormPage from './Pages/BlogFormPage';
 import Layout from './Layouts/Layout';
-//const cors = require('cors');
+
 
 
 
@@ -18,7 +18,7 @@ function App() {
   //set up hooks for the state 
   const [blogList, setBlogList] = useState([]);
   const [shouldRefresh, setShouldRefresh] = useState(false);
-
+  
 
   //load the todo items from the back end 
   useEffect(() => {

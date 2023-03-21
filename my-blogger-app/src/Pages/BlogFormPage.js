@@ -29,7 +29,7 @@ const BlogFormPage = (props) => {
             text: text,
             author: author,
             year: year,
-            categories: categories
+            categories: categories,
             // id: id,
             // createdAt: createdAt
 
@@ -52,40 +52,47 @@ const BlogFormPage = (props) => {
     return (
 		<div>
 			<h1>Create Blog Form</h1>
-			<label>Title</label>
+			<label>Title: </label>
 			<input type="text" onChange={(e)=>{
 				setTitle(e.target.value)
 			}} />
 			<br/>
-			<label>Text</label>
+			<br/>
+			<label>Text: </label>
 			<textarea type="text" onChange={(e)=>{
 				setText(e.target.value)
 			}} />
 			<br/>
-			<label>Author</label>
+			<br/>
+			<label>Author: </label>
 			<input type="text" onChange={(e)=>{
 				setAuthor(e.target.value)
 			}}/>
             <br/>
-            <label>Year</label>
+			<br/>
+            <label>Year: </label>
 			<input type="text" onChange={(e)=>{
 				setYear(e.target.value)
 			}}/>
             <br/>
-            <label>Categories</label>
+			<br/>
+            <label>Categories: </label>
 			<input type="text" onChange={(e)=>{
 				setCategories(e.target.value)
 			}}/>
+			<br/>
+			<br/>
             {/* <label>Id</label>
 			<input type="text" onChange={(e)=>{
 				setId(e.target.value)
-			}}/>
+			}}/> */}
             <br/>
-            <label>CreatedAt</label>
+            {/* <label>CreatedAt</label>
 			<input type="text" onChange={(e)=>{
 				setCreatedAt(e.target.value)
 			}}/> */}
             <br/>
+			<br/>
 			<button onClick={()=>{
 				handleCreateBlog()
 				navigate("/")

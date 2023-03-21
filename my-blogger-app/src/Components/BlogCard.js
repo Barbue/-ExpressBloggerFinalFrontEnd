@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-// Blog card 
+
 const BlogCard = (props) => {
 
     const {blog, urlEndPoint, setShouldRefresh } = props;
@@ -16,19 +16,21 @@ const BlogCard = (props) => {
 
 
     //implement handlers 
-    const handleSetToDoComplete = async () => {
-      setShouldRefresh(true);
-      const req = {
-        isComplete: !blog.isComplete
-      } 
-      const response = axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`, req)
+    // const handleSetToDoComplete = async () => {
+    //   setShouldRefresh(true);
+    //   const req = {
+    //     isComplete: !blog.isComplete
+    //   } 
+
+    // if above function is to be used, then "req" has to be added after the below blog.id}`, req
+      const response = axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`)
       .then(function (response) {
         console.log(response);
       },{
       'Content-Type': 'application/json'
       })
       setShouldRefresh(false);
-    }
+    // }
     const handleDeleteBlog = () => {
       const response = axios.delete(`${urlEndPoint}/blogs/delete-one/${blog.id}`)
       .then(function (response) {
@@ -119,19 +121,19 @@ const BlogCard = (props) => {
             
                    
            
-          <p>Is Complete: {blog.isComplete ? "Complete" : "Incomplete"}</p>
-          <p>Creation Date: {blog.creationDate.toString()}</p>
-          <p>Last Modified: {blog.lastModified.toString()}</p>
-          <p>
+          {/* <p>Is Complete: {blog.isComplete ? "Complete" : "Incomplete"}</p> */}
+          {/* <p>Creation Date: {blog.creationDate.toString()}</p> */}
+          {/* <p>Last Modified: {blog.lastModified.toString()}</p> */}
+          {/* <p>
             Completed Date: {blog.completedDate && blog.completedDate.toString()}
-          </p>
-          <button
+          </p> */}
+          {/* <button
             onClick={() => {
               handleSetToDoComplete();
             }}
           >
             Toggle Complete
-          </button>
+          </button> */}
           <button
             onClick={() => {
                 handleDeleteBlog();
