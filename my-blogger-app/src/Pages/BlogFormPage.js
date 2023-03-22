@@ -28,11 +28,10 @@ const BlogFormPage = (props) => {
             text: text,
             author: author,
             year: year,
-            categories: categories.split(","),
-            // id: id,
-            // createdAt: createdAt
-// x-www-form-urlencoded
-          }
+            categories: categories.split(","), // to create an array
+		}
+
+
 		console.log(req);
         axios.post(`${urlEndPoint}/blogs/create-one`, req)
           .then(function (response) {

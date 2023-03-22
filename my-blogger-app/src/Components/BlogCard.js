@@ -128,7 +128,7 @@ const BlogCard = (props) => {
           {/* <p>Is Complete: {blog.isComplete ? "Complete" : "Incomplete"}</p> */}
           <p>ID: {blog.id}</p>
           <p>Creation Date: {blog.createdAt.toString()}</p>
-          {/* <p>Last Modified: {blog.lastModified.toString()}</p> */}
+          <p>Last Modified: {blog.lastModified.toString()}</p>
           {/* <p>
             Completed Date: {blog.completedDate && blog.completedDate.toString()}
           </p> */}
@@ -144,8 +144,9 @@ const BlogCard = (props) => {
           >
           Delete Blog
           </button>
+        
                 {!isEditing && 
-          <button
+          <button 
             onClick={() => {
               setIsEditing(true);
             }}
